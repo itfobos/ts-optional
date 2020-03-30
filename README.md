@@ -3,4 +3,11 @@
 # TS Optional
 Typescript adapted Java Optional class.
 
-TODO: 
+TODO:
+
+### Supported Node versions
+Automatically tested with Node versions:
+- 8
+- 10
+- 11
+- 12
