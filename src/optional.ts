@@ -1,5 +1,5 @@
-import { Callback, Consumer, Function, Predicate, Producer } from './function-types';
-import { isNotNullOrUndefined, isNullOrUndefined, requireNonNull } from './object-utils';
+import {Callback, Consumer, Function, Predicate, Producer} from './function-types';
+import {isNotNullOrUndefined, isNullOrUndefined, requireNonNull} from './object-utils';
 
 /**
  * A container object which may or may not contain a non-null value.
@@ -105,6 +105,7 @@ export class Optional<T> {
   }
 
   public isPresent(): boolean {
+    //TODO: Implement via !empty
     return isNotNullOrUndefined(this.value);
   }
 
@@ -164,7 +165,7 @@ export class Optional<T> {
    */
   public filter(predicate: Predicate<T>): Optional<T> {
     requireNonNull(predicate);
-    if (!this.isPresent()) {
+    if (!this.isPresent()) { //TODO:
       return this;
     } else {
       return predicate(this.nonNullValue) ? this : Optional.empty();
@@ -202,7 +203,7 @@ export class Optional<T> {
    */
   public map<U>(mapper: Function<T, U>): Optional<U> {
     requireNonNull(mapper);
-    if (!this.isPresent()) {
+    if (!this.isPresent()) { //TODO: Use is empty
       return Optional.empty();
     } else {
       return Optional.ofNullable(mapper(this.nonNullValue));
