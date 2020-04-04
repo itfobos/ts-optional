@@ -1,8 +1,14 @@
 {
   "name": "ts-optional",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "typescript-library",
+    "monads",
+    "functional",
+    "optional"
+  ],
   "main": "dist/ts-optional.umd.js",
   "module": "dist/ts-optional.es5.js",
   "typings": "dist/types/ts-optional.d.ts",
