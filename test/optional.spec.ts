@@ -1,5 +1,5 @@
-import {Optional} from './optional';
-import {nopCallback} from './function-types';
+import {Optional} from '../src/optional';
+import {nopCallback} from '../src/function-types';
 
 describe('Optional', () => {
   const srcValue = 123;

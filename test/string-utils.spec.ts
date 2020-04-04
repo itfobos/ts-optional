@@ -1,4 +1,4 @@
-import { isNotNullOrEmpty } from './string-utils';
+import { isNotNullOrEmpty } from '../src/string-utils';
 
 describe('string-utils', () => {
 

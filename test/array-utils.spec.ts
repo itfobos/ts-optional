@@ -1,4 +1,4 @@
-import { isNotNullOrEmptyArray } from './array-utils';
+import { isNotNullOrEmptyArray } from '../src/array-utils';
 
 describe('array-utils', () => {
 

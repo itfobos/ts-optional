@@ -1,4 +1,4 @@
-import { isNotNullOrUndefined, requireNonEmpty, requireNonNull } from './object-utils';
+import { isNotNullOrUndefined, requireNonEmpty, requireNonNull } from '../src/object-utils';
 
 describe('string-utils', () => {
 
