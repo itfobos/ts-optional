@@ -1,0 +1,36 @@
+language: node_js
+
+cache: npm
+
+notifications:
+  email: false
+
+#TODO:
+#node_js:
+#  - '12'
+#  - '10'
+#  - '11'
+#  - '8'
+
+script: npm run test:prod && npm run build
+
+jobs:
+  include:
+    - stage: gp-pages
+      script: echo "Deploying to gh-pages ..."
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        on:
+          branch: 14-ci-stages
+#TODO: change branch to master
+
+#after_success:
+#  - npm run travis-deploy-once "npm run report-coverage"
+#  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run deploy-docs"; fi
+#  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
