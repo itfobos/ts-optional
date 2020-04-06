@@ -1,30 +1,31 @@
 language: node_js
 
-#TODO:
-cache:
-  directories:
-    - ~/.npm
-    - ~/.nvm
+cache: npm
 
 notifications:
   email: false
 
-node_js:
-  - '12'
-  - '10'
-  - '11'
-  - '8'
+#TODO:
+#node_js:
+#  - '12'
+#  - '10'
+#  - '11'
+#  - '8'
+
+script: npm run test:prod && npm run build
 
 jobs:
   include:
-    - stage: test with coverage
-      script: 'npm run test:prod'
-    - stage: build
-      script: npm run build
-
-#stages:
-#  - test with coverage
-#  - build
+    - stage: gp-pages
+      script: echo "Deploying to gh-pages ..."
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        on:
+          branch: 14-ci-stages
+#TODO: change branch to master
 
 #after_success:
 #  - npm run travis-deploy-once "npm run report-coverage"
