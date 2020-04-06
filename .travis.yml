@@ -5,12 +5,11 @@ cache: npm
 notifications:
   email: false
 
-#TODO:
 node_js:
   - '12'
   - '10'
-#  - '11'
-#  - '8'
+  - '11'
+  - '8'
 
 script:
   - npm run test:prod && npm run build
@@ -21,9 +20,8 @@ jobs:
       script: echo "Deploying to gh-pages ..."; npm run generate-docs;
       deploy:
         provider: pages
-        skip_cleanup: true
         local_dir: ./docs
-        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+        token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
         keep_history: true
         on:
           branch: 14-ci-stages
