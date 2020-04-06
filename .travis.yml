@@ -1,6 +1,10 @@
 language: node_js
 
-cache: npm
+#TODO:
+cache:
+  directories:
+    - ~/.npm
+    - ~/.nvm
 
 notifications:
   email: false
@@ -13,15 +17,14 @@ node_js:
 
 jobs:
   include:
-    - stage: test
-      name: 'Test with coverage'
-      script: npm run test:prod
+    - stage: test with coverage
+      script: 'npm run test:prod'
     - stage: build
       script: npm run build
 
-stages:
-  - test
-  - build
+#stages:
+#  - test with coverage
+#  - build
 
 #after_success:
 #  - npm run travis-deploy-once "npm run report-coverage"
