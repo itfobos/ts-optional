@@ -18,7 +18,7 @@ script:
 jobs:
   include:
     - stage: gh-pages
-      script: echo "Deploying to gh-pages ..."
+      script: echo "Deploying to gh-pages ..."; npm run generate-docs;
       deploy:
         provider: pages
         skip_cleanup: true
