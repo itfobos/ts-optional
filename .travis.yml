@@ -16,12 +16,13 @@ script:
 
 jobs:
   include:
-    - stage: gh-pages
-      script: echo "Deploying to gh-pages ..."; npm run generate-docs;
+    - stage: gh-pages-deploy
+      script: npm run generate-docs
       deploy:
         provider: pages
+        skip_cleanup: true
         local_dir: ./docs
-        token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
         keep_history: true
         on:
           branch: 14-ci-stages
