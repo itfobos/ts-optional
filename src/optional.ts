@@ -102,8 +102,7 @@ export class Optional<T> {
   }
 
   public isPresent(): boolean {
-    //TODO: Implement via !empty
-    return isNotNullOrUndefined(this.value);
+    return !this.isEmpty();
   }
 
   /**
@@ -161,7 +160,7 @@ export class Optional<T> {
    */
   public filter(predicate: Predicate<T>): Optional<T> {
     requireNonNull(predicate);
-    if (!this.isPresent()) { //TODO:
+    if (this.isEmpty()) {
       return this;
     } else {
       return predicate(this.nonNullValue) ? this : Optional.empty();
@@ -197,7 +196,7 @@ export class Optional<T> {
    */
   public map<U>(mapper: Function<T, U>): Optional<U> {
     requireNonNull(mapper);
-    if (!this.isPresent()) { //TODO: Use is empty
+    if (this.isEmpty()) {
       return Optional.empty();
     } else {
       return Optional.ofNullable(mapper(this.nonNullValue));
@@ -222,7 +221,7 @@ export class Optional<T> {
    */
   public flatMap<U>(mapper: Function<T, Optional<U>>): Optional<U> {
     requireNonNull(mapper);
-    if (!this.isPresent()) {
+    if (this.isEmpty()) {
       return Optional.empty();
     } else {
       return requireNonNull(mapper(this.nonNullValue));
