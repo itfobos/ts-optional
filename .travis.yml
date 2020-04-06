@@ -25,8 +25,7 @@ jobs:
         github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
         keep_history: true
         on:
-          branch: 14-ci-stages
-#TODO: change branch to master
+          branch: master
 
 #after_success:
 #  - npm run travis-deploy-once "npm run report-coverage"
