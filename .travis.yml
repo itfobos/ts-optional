@@ -6,8 +6,8 @@ notifications:
   email: false
 
 #TODO:
-#node_js:
-#  - '12'
+node_js:
+  - '12'
 #  - '10'
 #  - '11'
 #  - '8'
