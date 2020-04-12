@@ -5,43 +5,37 @@ cache: npm
 notifications:
   email: false
 
-#TODO:
 node_js:
   - '12'
-#  - '10'
-#  - '11'
-#  - '8'
-#  - 'node'
+  - '10'
+  - '11'
+  - '8'
+  - 'node'
 
 script:
   - npm run test:prod && npm run build
 
 jobs:
   include:
-#TODO:
-#    - stage: gh-pages-deploy
-#      script: npm run generate-docs
-#      deploy:
-#        provider: pages
-#        skip_cleanup: true
-#        local_dir: ./docs
-#        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
-#        keep_history: true
-#        on:
-#          branch: master
+    - stage: gh-pages-deploy
+      script: npm run generate-docs
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        local_dir: ./docs
+        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        on:
+          branch: master
     - stage: npm-release-deploy
       deploy:
         provider: npm
-        script: /bin/true
+        skip_cleanup: true
         email: "tr.wolfer@gmail.com"
         api_key: $NPM_TOKEN # Set in the settings page of your repository, as a secure variable
         on:
           tags: true
 
-#after_success:
-#  - npm run travis-deploy-once "npm run report-coverage"
-#  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run deploy-docs"; fi
-#  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
