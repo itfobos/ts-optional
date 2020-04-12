@@ -5,33 +5,34 @@ cache: npm
 notifications:
   email: false
 
+#TODO:
 node_js:
   - '12'
-  - '10'
-  - '11'
-  - '8'
-  - 'node'
+#  - '10'
+#  - '11'
+#  - '8'
+#  - 'node'
 
 script:
   - npm run test:prod && npm run build
 
 jobs:
   include:
-    - stage: gh-pages-deploy
-      script: npm run generate-docs
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        local_dir: ./docs
-        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
-        keep_history: true
-        on:
-          branch: master
+#TODO:
+#    - stage: gh-pages-deploy
+#      script: npm run generate-docs
+#      deploy:
+#        provider: pages
+#        skip_cleanup: true
+#        local_dir: ./docs
+#        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+#        keep_history: true
+#        on:
+#          branch: master
     - stage: npm-release-deploy
       deploy:
         provider: npm
-        skip_cleanup: true
-        script: echo "Deploying to NPM..."
+        script: /bin/true
         email: "tr.wolfer@gmail.com"
         api_key: $NPM_TOKEN # Set in the settings page of your repository, as a secure variable
         on:
