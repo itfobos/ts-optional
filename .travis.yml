@@ -27,6 +27,14 @@ jobs:
         keep_history: true
         on:
           branch: master
+    - stage: npm-release-deploy
+      deploy:
+        provider: npm
+        skip_cleanup: true
+        email: "tr.wolfer@gmail.com"
+        api_key: "NPM_TOKEN" # Set in the settings page of your repository, as a secure variable
+        on:
+          tags: true
 
 #after_success:
 #  - npm run travis-deploy-once "npm run report-coverage"
