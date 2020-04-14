@@ -26,7 +26,7 @@ jobs:
         github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
         keep_history: true
         on:
-          branch: master
+          tags: true
     - stage: npm-release-deploy
       deploy:
         provider: npm
@@ -35,7 +35,3 @@ jobs:
         api_key: $NPM_TOKEN # Set in the settings page of your repository, as a secure variable
         on:
           tags: true
-
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
